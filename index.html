@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XAI Attribution Papers</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f4f7fb;
+      --surface: #ffffff;
+      --border: #d8e1ef;
+      --text: #162033;
+      --muted: #4b5b76;
+      --accent: #315bdb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: linear-gradient(180deg, #edf3ff 0%, var(--background) 35%, #f8fafc 100%);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    header,
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(22, 32, 51, 0.06);
+    }
+
+    header {
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    section {
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+
+    h1,
+    h2 {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 3vw, 1.75rem);
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin: 16px 0 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .links a,
+    .links span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f8fbff;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .links a {
+      color: var(--accent);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .math {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.03rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Explainable AI and Feature Attribution</h1>
+      <p>
+        Explainable artificial intelligence (XAI) studies how we can make model behavior easier to inspect,
+        justify, and trust. A central idea is <strong>feature attribution</strong>: decomposing a prediction into
+        contributions from the input variables so that we can better understand why a model produced a result.
+      </p>
+      <p>
+        We are especially interested in mathematically grounded attribution methods that do more than assign a
+        single score per feature. The two works below explore richer directions: one studies attribution under
+        <strong>Gaussian process uncertainty</strong>, and the other extends attribution to
+        <strong>higher-order feature interactions</strong>.
+      </p>
+      <p class="math">
+        In the simplest view, we would like explanations of the form
+        φ<sub>1</sub>(x) + ··· + φ<sub>d</sub>(x) ≈ f(x) - f(x′),
+        but these papers ask what happens when uncertainty or multi-feature interactions matter as well.
+      </p>
+    </header>
+
+    <section>
+      <h2>Explainable Learning with Gaussian Processes</h2>
+      <p class="meta">Kurt Butler, Guanchao Feng, and Petar M. Djurić (2024)</p>
+      <ul class="links">
+        <li><a href="https://arxiv.org/abs/2403.07072v1">arXiv</a></li>
+        <li><span>Official publication not listed</span></li>
+        <li><a href="https://github.com/KurtButler/2024_attributions_paper">Code</a></li>
+      </ul>
+      <p>
+        This paper studies attribution for Gaussian process regression (GPR), where the model prediction is not
+        just flexible but also explicitly uncertain. The key contribution is a principled definition of feature
+        attributions under model uncertainty, together with closed-form expressions that stay interpretable.
+      </p>
+      <p>
+        A particularly attractive result is that when integrated gradients are used as the attribution method,
+        the attributions themselves inherit a Gaussian process structure. That means the explanation comes with
+        uncertainty estimates, which is valuable when the model is making predictions in data-sparse or
+        extrapolative settings.
+      </p>
+    </section>
+
+    <section>
+      <h2>Higher-Order Feature Attribution: Bridging Statistics, Explainable AI, and Topological Signal Processing</h2>
+      <p class="meta">Kurt Butler, Guanchao Feng, and Petar M. Djurić (2025 / ICASSP 2026)</p>
+      <ul class="links">
+        <li><a href="https://arxiv.org/abs/2510.06165v2">arXiv</a></li>
+        <li><a href="https://doi.org/10.1109/ICASSP55912.2026.11461829">Official publication</a></li>
+        <li><span>Code not publicly linked</span></li>
+      </ul>
+      <p>
+        This work asks how attribution should behave when predictions depend on interactions between several
+        variables rather than on isolated features. Instead of stopping at first-order contributions, it develops
+        a theory of <strong>higher-order attribution</strong> built on integrated gradients.
+      </p>
+      <p>
+        The paper is exciting from an XAI perspective because it connects attribution theory with ideas from
+        statistics and topological signal processing. In practical terms, it moves explanation beyond
+        “which feature mattered most?” toward “which combinations of features created the effect, and how are
+        those interactions structured?”
+      </p>
+    </section>
+  </main>
+</body>
+</html>
