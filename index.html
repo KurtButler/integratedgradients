@@ -106,6 +106,41 @@
       font-family: "Times New Roman", Times, serif;
       font-size: 1.03rem;
     }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(22, 32, 51, 0.06);
+    }
+
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 88px 34px;
+      width: 100%;
+    }
+
+    .footer-logos img {
+      height: 42px;
+      width: auto;
+      max-width: 150px;
+      object-fit: contain;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 640px) {
+      .footer-logos img {
+        height: 36px;
+        max-width: 130px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -169,6 +204,14 @@
         extrapolative settings.
       </p>
     </section>
+
+    <footer>
+      <div class="footer-logos">
+        <img src="images/SBU.png" alt="Stony Brook University logo">
+        <img src="images/UoE.webp" alt="University of Edinburgh logo">
+        <img src="images/CHAI.png" alt="CHAI logo">
+      </div>
+    </footer>
   </main>
 </body>
 </html>
